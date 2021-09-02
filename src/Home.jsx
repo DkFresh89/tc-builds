@@ -1,10 +1,12 @@
 import { Box, Heading } from "@chakra-ui/react"
 
-export default function About(){
+
+export default function Home() {
 
     return(
         <Box padding='15'>
-            <Heading>About Us:</Heading>
+        <Heading> Home </Heading>
         </Box>
     )
+
 }
