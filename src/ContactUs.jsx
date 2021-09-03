@@ -24,31 +24,31 @@ export default function ContactUs() {
         <Box padding='15'>
         <Heading>Contact Us:</Heading>
 
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
         <FormLabel>Company:</FormLabel>
-        <Input placeholder='Company' />
+        <Input {...register("Company")} placeholder='Company' />
         <FormControl isRequired>
         {/* // automatically gets `htmlFor` */}
         <FormLabel>First name:</FormLabel>
         {/* // automatically gets `id` and `aria-*` properties */}
-        <Input placeholder="First name" />
+        <Input {...register("First Name")} placeholder="First name" />
         {/* // automatically gets `id` and hides if `isInvalid` is passed to `FormControl` */}
         {/* <FormHelperText>Keep your first name short</FormHelperText> */}
         {/* // automatically gets `id` and shows if `isInvalid` is passed to `FormControl` */}
         {/* <FormErrorMessage>First name is invalid</FormErrorMessage> */}
         <FormLabel>Last name:</FormLabel>
-        <Input placeholder='Last name' />
+        <Input {...register("Last name")} placeholder='Last name' />
         <FormLabel>Phone number:</FormLabel>
-        <NumberInput type='tel' >
-        <NumberInputField placeholder='Phone number' />
+        <NumberInput  type='tel' >
+        <NumberInputField {...register("Phone")} placeholder='Phone number' />
         </NumberInput>
         <FormLabel>Email:</FormLabel>
-        <Input placeholder='Email' type='email'/>
-        <RadioGroup  >
+        <Input {...register("Email")} placeholder='Email' type='email'/>
+        <RadioGroup >
         <FormLabel>Preferred method of contact:</FormLabel>
         <Stack direction="row">
-        <Radio value="Phone">Phone</Radio>
-        <Radio value="Email">Email</Radio>
+        <Radio {...register("Method")}  value="Phone">Phone</Radio>
+        <Radio {...register("Method")}  value="Email">Email</Radio>
         </Stack>
         </RadioGroup>
         <FormLabel>How may we help you?</FormLabel>
