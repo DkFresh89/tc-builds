@@ -10,14 +10,22 @@ import {
     Textarea,
     NumberInput,
     NumberInputField
-  } from "@chakra-ui/react";
+} from "@chakra-ui/react";
+import ReCAPTCHA from "react-google-recaptcha";
+import React from "react";
+import ReactDOM from "react-dom";
 
 export default function ContactUs() {
+
+    function onChange(value) {
+        console.log("Captcha value:", value);
+      }
     
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
         const onSubmit = data => console.log(data);
         console.log(errors);
 
+        const recaptchaRef = React.createRef();
 
     return(
 
@@ -54,6 +62,14 @@ export default function ContactUs() {
         <FormLabel>How may we help you?</FormLabel>
         <Textarea />
         </FormControl>
+        <ReCAPTCHA
+      ref={recaptchaRef}
+      size="invisible"
+      sitekey="6LekT0IcAAAAALG3H1H0l8piXzinS-5F3aDrbSfo"
+      onChange={onChange}
+      badge='inline'
+    />
+
         <Button type='submit' >Submit</Button>
         </form>
 
