@@ -13,33 +13,47 @@ import {
 } from "@chakra-ui/react";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
+import emailjs from 'emailjs-com';
 import ReactDOM from "react-dom";
 
 export default function ContactUs() {
+
 
     function onChange(value) {
         console.log("Captcha value:", value);
       }
     
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
-        const onSubmit = data => console.log(data);
+        // const onSubmit = data => sendEmail(data)
+        // console.log(data);
         console.log(errors);
 
         const recaptchaRef = React.createRef();
+
+        function sendEmail(e) {
+            e.preventDefault();
+            console.log(e)
+            emailjs.sendForm('service_ma7qzox', 'template_2zldsdi', e.target, 'user_9lJtsZILDa7jMOXgEvghk')
+              .then((result) => {
+                  console.log(result.text);
+              }, (error) => {
+                  console.log(error.text);
+              });
+          }
 
     return(
 
         <Box padding='15'>
         <Heading>Contact Us:</Heading>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={sendEmail}>
         <FormLabel>Company:</FormLabel>
         <Input {...register("Company")} placeholder='Company' />
         <FormControl isRequired>
         {/* // automatically gets `htmlFor` */}
         <FormLabel>First name:</FormLabel>
         {/* // automatically gets `id` and `aria-*` properties */}
-        <Input {...register("First Name")} placeholder="First name" />
+        <Input {...register("First name")} placeholder="First name" />
         {/* // automatically gets `id` and hides if `isInvalid` is passed to `FormControl` */}
         {/* <FormHelperText>Keep your first name short</FormHelperText> */}
         {/* // automatically gets `id` and shows if `isInvalid` is passed to `FormControl` */}
@@ -60,7 +74,7 @@ export default function ContactUs() {
         </Stack>
         </RadioGroup>
         <FormLabel>How may we help you?</FormLabel>
-        <Textarea />
+        <Textarea {...register("Sum")} />
         </FormControl>
         <ReCAPTCHA
       ref={recaptchaRef}
