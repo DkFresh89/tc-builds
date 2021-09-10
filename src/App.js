@@ -5,12 +5,13 @@ import About from './About'
 import Sidebar from './Sidebar';
 import Home from './Home';
 import ContactUs from './ContactUs';
+import Gears from './Gears-no-bg.webp'
 
 function App() {
   return (
-    <Flex>
+    <Flex bgImage={Gears} bgSize='cover'>
       <Sidebar />
-      <Container bg='#F9F9F9' overflow='auto'>
+      <Container bg='#F9F9F9' overflow='auto' >
         <Switch>
           <Route exact path="/">
           <Box bg='#F9F9F9'>
