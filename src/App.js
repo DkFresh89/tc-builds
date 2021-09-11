@@ -9,9 +9,9 @@ import Gears from './Gears-no-bg.webp'
 
 function App() {
   return (
-    <Flex bgImage={Gears} bgSize='cover'>
-      <Sidebar />
-      <Container bg='#F9F9F9' overflow='auto' >
+    <Flex bgColor='red' bgImage={Gears} bgSize='cover' overflow='scroll'>
+      {/* <Sidebar /> */}
+      <Container bg='#F9F9F9' padding='10' >
         <Switch>
           <Route exact path="/">
           <Box bg='#F9F9F9'>
